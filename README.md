@@ -2,6 +2,14 @@
 
 CLI application to convert temperature from Celsius to Fahrenheit and vice versa
 
-Built in **_Rust_** 🚀
+Built in **Rust** 🚀
 
+
+
+## Download
+Find latest binaries for Windows and Linux on https://github.com/krishna-santosh/cf/releases/
+
+
+
+## Usage
 ![help-menu-image](https://user-images.githubusercontent.com/75202541/200177851-c750f8ed-a86b-4131-ab83-a53026c20e14.png)
