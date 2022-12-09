@@ -28,7 +28,7 @@ fn main() {
     }
 }
 
-const VERSION: &'static str = env!("CARGO_PKG_VERSION");
+const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 const HELP_MENU: &str = "
 Celsius <=> Fahrenheit
@@ -62,14 +62,14 @@ fn parse_args() -> (String, f64) {
                 println!("{}", HELP_MENU);
                 exit(1)
             }
-            return ("-f".to_string(), parse_float(&args[2]));
+            ("-f".to_string(), parse_float(&args[2]))
         }
         "-c" | "--celsius" => {
             if args_len != 3 {
                 println!("{}", HELP_MENU);
                 exit(1)
             }
-            return ("-c".to_string(), parse_float(&args[2]));
+            ("-c".to_string(), parse_float(&args[2]))
         }
         "-h" | "--help" => {
             println!("{}", HELP_MENU);
