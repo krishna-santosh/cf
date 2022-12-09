@@ -8,23 +8,22 @@ enum Unit {
 fn main() {
     let (choice, temperature) = parse_args();
 
-    match choice.as_str() {
-        "-f" => {
+    match choice {
+        Unit::Fahrenheit => {
             println!(
                 "{}° Fahrenheit = {:.2}° Celsius",
                 temperature,
-                convert(temperature, Unit::Fahrenheit)
+                convert(temperature, choice)
             );
         }
 
-        "-c" => {
+        Unit::Celsius => {
             println!(
                 "{}° Celsius = {:.2}° Fahrenheit",
                 temperature,
-                convert(temperature, Unit::Celsius)
+                convert(temperature, choice)
             );
         }
-        _ => (),
     }
 }
 
@@ -46,7 +45,7 @@ Example:
     cf -f 100
     cf -c 37.78";
 
-fn parse_args() -> (String, f64) {
+fn parse_args() -> (Unit, f64) {
     let args: Vec<String> = env::args().collect();
 
     let args_len = args.len();
@@ -62,14 +61,14 @@ fn parse_args() -> (String, f64) {
                 println!("{}", HELP_MENU);
                 exit(1)
             }
-            ("-f".to_string(), parse_float(&args[2]))
+            return (Unit::Fahrenheit, parse_float(&args[2]));
         }
         "-c" | "--celsius" => {
             if args_len != 3 {
                 println!("{}", HELP_MENU);
                 exit(1)
             }
-            ("-c".to_string(), parse_float(&args[2]))
+            return (Unit::Celsius, parse_float(&args[2]));
         }
         "-h" | "--help" => {
             println!("{}", HELP_MENU);
