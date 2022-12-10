@@ -1,4 +1,4 @@
-use std::{env, num::ParseFloatError, process::exit};
+use std::{env, process::exit};
 
 enum Unit {
     Celsius,
@@ -86,15 +86,11 @@ fn parse_args() -> (Unit, f64) {
 }
 
 fn parse_float(arg: &String) -> f64 {
-    let temp: Result<f64, ParseFloatError> = arg.parse();
-
-    match temp {
-        Ok(value) => value,
-        Err(_msg) => {
-            println!("Invalid argument: {}\nPass in a number", arg);
-            exit(1)
-        }
-    }
+    let temp = arg.parse().unwrap_or_else(|_| {
+        println!("Invalid argument: {}\nPass in a number", arg);
+        exit(1)
+    });
+    temp
 }
 
 fn convert(temp: f64, unit: Unit) -> f64 {
