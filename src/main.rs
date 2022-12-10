@@ -99,3 +99,27 @@ fn convert(temp: f64, unit: Unit) -> f64 {
         Unit::Fahrenheit => (temp - 32f64) * (5f64 / 9f64),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_parse_float() {
+        assert_eq!(parse_float(&String::from("100")), 100.0);
+        assert_eq!(parse_float(&String::from("37.78")), 37.78);
+        assert_eq!(parse_float(&String::from("0")), 0.0);
+        assert_eq!(parse_float(&String::from("-273.15")), -273.15);
+    }
+
+    #[test]
+    fn test_convert() {
+        assert_eq!(convert(212.0, Unit::Fahrenheit), 100.0);
+        assert_eq!(convert(100.0, Unit::Celsius), 212.0);
+        assert_eq!(convert(0.0, Unit::Celsius), 32.0);
+        assert_eq!(convert(32.0, Unit::Fahrenheit), 0.0);
+        assert_eq!(convert(-40.0, Unit::Celsius), -40.0);
+        assert_eq!(convert(-40.0, Unit::Fahrenheit), -40.0);
+    }
+
+}
