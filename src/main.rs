@@ -61,14 +61,14 @@ fn parse_args() -> (Unit, f64) {
                 println!("{}", HELP_MENU);
                 exit(1)
             }
-            return (Unit::Fahrenheit, parse_float(&args[2]));
+            (Unit::Fahrenheit, parse_float(&args[2]))
         }
         "-c" | "--celsius" => {
             if args_len != 3 {
                 println!("{}", HELP_MENU);
                 exit(1)
             }
-            return (Unit::Celsius, parse_float(&args[2]));
+            (Unit::Celsius, parse_float(&args[2]))
         }
         "-h" | "--help" => {
             println!("{}", HELP_MENU);
@@ -86,11 +86,10 @@ fn parse_args() -> (Unit, f64) {
 }
 
 fn parse_float(arg: &String) -> f64 {
-    let temp = arg.parse().unwrap_or_else(|_| {
+    arg.parse().unwrap_or_else(|_| {
         println!("Invalid argument: {}\nPass in a number", arg);
         exit(1)
-    });
-    temp
+    })
 }
 
 fn convert(temp: f64, unit: Unit) -> f64 {
