@@ -1,5 +1,7 @@
 # cf
 
+[![Test](https://github.com/krishna-santosh/cf/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/krishna-santosh/cf/actions/workflows/rust.yml)
+
 CLI application to convert temperature from Celsius to Fahrenheit and vice versa
 
 Built in **Rust** 🚀
