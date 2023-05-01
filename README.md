@@ -6,6 +6,7 @@ CLI application to convert temperature from Celsius to Fahrenheit and vice versa
 
 Built in **Rust** 🚀
 
+> By developing this program, I was able to wade into the world of Rust programming and gain a better understanding of its benefits and limitations. It was a pleasant experience and I'm excited to dive in deeper and learn more.
 
 ## Download
 Find latest binaries for Windows and Linux on https://github.com/krishna-santosh/cf/releases/
